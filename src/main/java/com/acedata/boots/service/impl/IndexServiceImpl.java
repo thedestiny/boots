@@ -5,6 +5,7 @@ import com.acedata.boots.domain.ext.UserExt;
 import com.acedata.boots.mapper.TaskMapper;
 import com.acedata.boots.mapper.UserMapper;
 import com.acedata.boots.service.inter.IndexService;
+import com.acedata.boots.util.string.StringUtils;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,14 +61,13 @@ public class IndexServiceImpl implements IndexService {
    @Autowired
     public Integer saveTask(TaskExt task) {
 
+       task.setId(StringUtils.generateUUID());
        return taskMapper.save(task);
-    }
-
-
-    public static void main(String[] args) {
-
 
     }
+
+
+
 
 
 }

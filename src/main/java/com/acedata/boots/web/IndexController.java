@@ -19,9 +19,9 @@ public class IndexController {
     @Autowired
     private IndexServiceImpl indexService;
 
-    @RequestMapping(value = "/index/data",method = RequestMethod.GET)
+    @RequestMapping(value = "/index/data", method = RequestMethod.GET)
     @ResponseBody
-    public List<String> getData(){
+    public List<String> getData() {
 
         List<String> list = indexService.queryList();
 
@@ -35,27 +35,27 @@ public class IndexController {
     }
 
 
-    @RequestMapping(value = "/index/index.html",method = RequestMethod.GET)
-    public String getIndexPage(){
+    @RequestMapping(value = "/index/index.html", method = RequestMethod.GET)
+    public String getIndexPage() {
 
         return "index";
     }
 
-    @RequestMapping(value = "/index/task/list",method = RequestMethod.GET)
+    @RequestMapping(value = "/index/task/list", method = RequestMethod.GET)
     @ResponseBody
-    public List<TaskExt> getTaskList(){
+    public List<TaskExt> getTaskList() {
 
         return indexService.getTaskList();
 
     }
 
+    @RequestMapping(value = "/index/task/save", method = RequestMethod.GET)
+    @ResponseBody
+    public String saveTask(TaskExt taskExt) {
 
+        return indexService.saveTask(taskExt) == 1 ? "success" : "failure";
 
-
-
-
-
-
+    }
 
 
 }

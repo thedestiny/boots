@@ -10,14 +10,14 @@
         <result column="user_id" property="userId" />
     </resultMap>
 
-    <parameterMap id="City" type="com.acedata.boots.domain.ext.TaskExt"/>
+    <parameterMap id="TaskExt" type="com.acedata.boots.domain.ext.TaskExt"/>
 
     <sql id="Base_Column_List">
         id, content, create_time, flag, user_id
     </sql>
 
-    <insert id="save" parameterType="TaskExt" useGeneratedKeys="true" keyProperty="id" >
-        insert into task (id, content, create_time, flag, user_id) VALUES (#{content},#{createTime},#{flag},#{user_id});
+    <insert id="save" parameterType="TaskExt" >
+        insert into task (id,content, create_time, flag, user_id) VALUES (#{id},#{content},#{createTime},#{flag},#{userId});
     </insert>
 
     <select id="queryOneByPrimaryKey" parameterType="String" resultMap="BaseResultMap" >
